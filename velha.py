@@ -86,8 +86,10 @@ class Jogador:
 
 
 def jogar():
-    jogador1 = Jogador('João', 'X')
-    jogador2 = Jogador('Larissa', 'O')
+    nome_jogador = input('Digite o nome do Jogador 1')
+    jogador1 = Jogador(nome_jogador, 'X')
+    nome_jogador = input('Digite o nome do Jogador 2')
+    jogador2 = Jogador(nome_jogador, 'O')
     jogo = Velha(jogador1, jogador2)
     vencedor = None
     venceu = False
