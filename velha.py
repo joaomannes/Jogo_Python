@@ -20,31 +20,29 @@ class Velha:
         return self.__jogador_atual
 
     def verifica_vencedor(self):
+        vencedor = False
         if self.__tabuleiro[0] == self.__tabuleiro[1] == self.__tabuleiro[2] != '':
-            return self.busca_jogador(self.__tabuleiro[0])
+            vencedor = True
         elif self.__tabuleiro[3] == self.__tabuleiro[4] == self.__tabuleiro[5] != '':
-            return self.busca_jogador(self.__tabuleiro[3])
+            vencedor = True
         elif self.__tabuleiro[6] == self.__tabuleiro[7] == self.__tabuleiro[8] != '':
-            return self.busca_jogador(self.__tabuleiro[6])
+            vencedor = True
         elif self.__tabuleiro[0] == self.__tabuleiro[3] == self.__tabuleiro[6] != '':
-            return self.busca_jogador(self.__tabuleiro[0])
+            vencedor = True
         elif self.__tabuleiro[1] == self.__tabuleiro[4] == self.__tabuleiro[7] != '':
-            return self.busca_jogador(self.__tabuleiro[1])
+            vencedor = True
         elif self.__tabuleiro[2] == self.__tabuleiro[5] == self.__tabuleiro[8] != '':
-            return self.busca_jogador(self.__tabuleiro[2])
+            vencedor = True
         elif self.__tabuleiro[0] == self.__tabuleiro[4] == self.__tabuleiro[8] != '':
-            return self.busca_jogador(self.__tabuleiro[0])
+            vencedor = True
         elif self.__tabuleiro[2] == self.__tabuleiro[4] == self.__tabuleiro[6] != '':
-            return self.busca_jogador(self.__tabuleiro[2])
+            vencedor = True
+
+        if vencedor:
+            return self.jogador_atual
 
     def verifica_empate(self):
         return '' not in self.__tabuleiro
-
-    def busca_jogador(self, simbolo):
-        if self.__jogadores[0].simbolo == simbolo:
-            return self.__jogadores[0]
-        else:
-            return self.__jogadores[1]
 
     def altera_jogador(self):
         if self.__jogador_atual == self.__jogadores[0]:
@@ -86,9 +84,9 @@ class Jogador:
 
 
 def jogar():
-    nome_jogador = input('Digite o nome do Jogador 1')
+    nome_jogador = input('Digite o nome do Jogador 1: ')
     jogador1 = Jogador(nome_jogador, 'X')
-    nome_jogador = input('Digite o nome do Jogador 2')
+    nome_jogador = input('Digite o nome do Jogador 2: ')
     jogador2 = Jogador(nome_jogador, 'O')
     jogo = Velha(jogador1, jogador2)
     vencedor = None
